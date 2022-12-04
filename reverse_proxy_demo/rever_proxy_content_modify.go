@@ -13,7 +13,7 @@ import (
 	"strings"
 )
 
-var addr = "127.0.0.1:2002"
+var addr1 = "127.0.0.1:2002"
 
 func main() {
 	//127.0.0.1:2002/xxx
@@ -24,8 +24,8 @@ func main() {
 		log.Println(err1)
 	}
 	proxy := NewSingleHostReverseProxy(url1)
-	log.Println("Starting httpserver at " + addr)
-	log.Fatal(http.ListenAndServe(addr, proxy))
+	log.Println("Starting httpserver at " + addr1)
+	log.Fatal(http.ListenAndServe(addr1, proxy))
 }
 
 func NewSingleHostReverseProxy(target *url.URL) *httputil.ReverseProxy {
@@ -39,7 +39,7 @@ func NewSingleHostReverseProxy(target *url.URL) *httputil.ReverseProxy {
 		//127.0.0.1:2002/dir/abc ==> 127.0.0.1:2003/base/abc ??
 		//127.0.0.1:2002/dir/abc ==> 127.0.0.1:2002/abc
 		//127.0.0.1:2002/abc ==> 127.0.0.1:2003/base/abc
-		re, _ := regexp.Compile("^/dir(.*)");
+		re, _ := regexp.Compile("^/dir(.*)")
 		req.URL.Path = re.ReplaceAllString(req.URL.Path, "$1")
 
 		req.URL.Scheme = target.Scheme

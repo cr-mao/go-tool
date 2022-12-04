@@ -1,10 +1,11 @@
 ## go代码库 
 
-
-- udp udp demo
-- unpack tcp消息编码
-- tcp_pack_client.go  tcp pack客户端
-- tcp_pack_server.go  tcp pack服务端
+- forward_proxy_demo 正向代理
+- http_reverse_demo 反向代理
+- httpdemo    
+- tcpdemo  
+- udpdemo        
+- unpackdemo tcp消息编码
 
 
 
